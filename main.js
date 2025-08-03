@@ -1,9 +1,9 @@
 const products = [
-    { id: 1, title: "Куртка мужская", price: 1200, category: "Мужское", image: "https://via.placeholder.com/300x200?text=Куртка" },
-    { id: 2, title: "Платье женское", price: 950, category: "Женское", image: "https://via.placeholder.com/300x200?text=Платье" },
-    { id: 3, title: "Футболка детская", price: 400, category: "Детское", image: "https://via.placeholder.com/300x200?text=Футболка" },
-    { id: 4, title: "Джинсы мужские", price: 1100, category: "Мужское", image: "https://via.placeholder.com/300x200?text=Джинсы" },
-    { id: 5, title: "Юбка женская", price: 800, category: "Женское", image: "https://via.placeholder.com/300x200?text=Юбка" },
+    { id: 1, title: "Куртка мужская", price: 1200, category: "Мужское", image: "https://img.joomcdn.net/91d5fbe421f97bda06a4137e6f0b0560796aeb40_original.jpeg" },
+    { id: 2, title: "Платье женское", price: 950, category: "Женское", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVVNiAS8lm5IiaHKT_8Wi5mT9vM4cfOAHXdg&s" },
+    { id: 3, title: "Футболка детская", price: 400, category: "Детское", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ-LlUj9eq6H2ZSw6G9Cmqt9MjtgWcC7ZjUQ&s" },
+    { id: 4, title: "Джинсы мужские", price: 1100, category: "Мужское", image: "https://s.62.ua/section/promonewsintext/upload/images/promo/intext/000/056/302/1_66fe87983914d.jpg" },
+    { id: 5, title: "Юбка женская", price: 800, category: "Женское", image: "https://odezhda-optom.kz/image/cache/data/30-06-2023/w400151-800x800.jpg" },
 ];
 
 let cart = [];
