@@ -1,32 +1,69 @@
-// Пример товара
-const product = {
-    id: 101,
-    title: "Пуховик зимний мужской",
-    price: 2200,
-    description: "Теплый зимний пуховик с капюшоном. Материал: полиэстер, подкладка: флис.",
-    image: "https://via.placeholder.com/500x500?text=Пуховик"
-};
+// Загружаем товары с API
+async function fetchProducts() {
+    try {
+        const res = await fetch("https://fakestoreapi.com/products?limit=4"); // пример API
+        if (!res.ok) throw new Error("Ошибка загрузки товаров");
+        const products = await res.json();
+        renderProducts(products);
+    } catch (err) {
+        console.error(err);
+        alert("Не удалось загрузить товары");
+    }
+}
 
-let cart = [];
+// Рендер списка товаров
+function renderProducts(products) {
+    const container = document.getElementById("product-list");
+    container.innerHTML = "";
 
-// Заполнение страницы
-document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("product-title").textContent = product.title;
-    document.getElementById("product-price").textContent = product.price + " грн.";
-    document.getElementById("product-description").textContent = product.description;
-    document.querySelector(".product-image img").src = product.image;
+    products.forEach(product => {
+        const item = document.createElement("div");
+        item.classList.add("product");
+        item.innerHTML = `
+            <img src="${product.image}" alt="${product.title}" width="150">
+            <h3>${product.title}</h3>
+            <p>${product.price} грн.</p>
+            <button data-id="${product.id}">Добавить в корзину</button>
+        `;
+        container.appendChild(item);
+    });
 
-    // Счётчик корзины
-    updateCartCount();
-});
+    // Навешиваем обработчики кнопок
+    document.querySelectorAll(".product button").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const productId = btn.dataset.id;
+            const product = products.find(p => p.id == productId);
+            addToCart(product);
+        });
+    });
+}
 
-// Добавить в корзину
-document.querySelector(".add-to-cart-btn").addEventListener("click", () => {
+// Получение корзины из localStorage
+function getCart() {
+    return JSON.parse(localStorage.getItem("cart")) || [];
+}
+
+// Сохранение корзины
+function saveCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+// Добавление товара в корзину
+function addToCart(product) {
+    const cart = getCart();
     cart.push(product);
+    saveCart(cart);
     updateCartCount();
     alert("Товар добавлен в корзину!");
-});
-
-function updateCartCount() {
-    document.querySelector(".cart-count").textContent = cart.length;
 }
+
+// Обновление счётчика корзины
+function updateCartCount() {
+    document.querySelector(".cart-count").textContent = getCart().length;
+}
+
+// Инициализация
+document.addEventListener("DOMContentLoaded", () => {
+    fetchProducts();
+    updateCartCount();
+});
