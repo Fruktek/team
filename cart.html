@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Fashion Store — Кошик</title>
+    <link rel="stylesheet" href="./style.css"/>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body data-page="cart">
+<header class="site-header">
+    <a class="logo" href="./index.html">Fashion Store</a>
+    <nav class="main-nav">
+        <ul>
+            <li><a href="./index.html">Головна</a></li>
+            <li><a href="./catalog.html">Каталог</a></li>
+            <li><a href="./cart.html" class="active">Кошик</a></li>
+        </ul>
+    </nav>
+    <div class="header-actions">
+        <a class="icon-btn" href="./cart.html" title="Кошик" style="width: 80px">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cart-count">0</span>
+        </a>
+        <button class="icon-btn" id="theme-toggle" title="Перемикач теми">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+</header>
+
+<main class="cart">
+    <h1>Кошик</h1>
+
+    <div id="cart-empty" class="card card--center hidden">
+        <p>Ваш кошик порожній.</p>
+        <a class="btn btn-primary" href="./catalog.html">До каталогу</a>
+    </div>
+
+    <div id="cart-content" class="cart-content hidden">
+        <div class="cart-list" id="cart-list"></div>
+
+        <aside class="cart-summary card">
+            <div class="summary-row">
+                <span>Разом товарів</span>
+                <span id="summary-items">0</span>
+            </div>
+            <div class="summary-row">
+                <span>Сума</span>
+                <span id="summary-total">0 ₴</span>
+            </div>
+            <div class="summary-row">
+                <span>Доставка</span>
+                <span id="summary-shipping">Розрахуємо на касі</span>
+            </div>
+
+            <div class="promo" style="display: flex; flex-direction: column; gap: 15px">
+                <label for="promo">Промокод</label>
+                <div class="input-group">
+                    <input id="promo" type="text" placeholder="Напр., SAVE10"/>
+                    <button id="apply-promo" class="btn btn-sm">Застосувати</button>
+                </div>
+                <small class="muted">Демо: використайте SAVE10 для знижки 10%.</small>
+            </div>
+
+            <button id="checkout" class="btn btn-primary btn-lg" style="display: block; margin-top: 20px">Оформити замовлення</button>
+            <button id="clear-cart" class="btn btn-outline btn-sm" style="margin-top: 20px">Очистити кошик</button>
+        </aside>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="footer__bottom">
+        <p>&copy; 2025 Fashion Store</p>
+    </div>
+</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+<script src="./main.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Fashion Store — Каталог</title>
+    <link rel="stylesheet" href="./style.css"/>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body data-page="catalog">
+<header class="site-header">
+    <a class="logo" href="./index.html">Fashion Store</a>
+    <nav class="main-nav">
+        <ul>
+            <li><a href="./index.html">Головна</a></li>
+            <li><a href="./catalog.html" class="active">Каталог</a></li>
+            <li><a href="./cart.html">Кошик</a></li>
+        </ul>
+    </nav>
+    <div class="header-actions">
+        <a class="icon-btn" href="./cart.html" title="Кошик" style="width: 80px">
+            <i class="fas fa-shopping-cart" ></i>
+            <span class="cart-count" id="cart-count">0</span>
+        </a>
+        <button class="icon-btn" id="theme-toggle" title="Перемикач теми">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+</header>
+
+<main class="catalog">
+    <aside class="filters">
+        <h2>Фільтри</h2>
+
+        <div class="filter-group">
+            <label for="search">Пошук</label>
+            <div class="input-with-icon">
+                <i class="fas fa-magnifying-glass"></i>
+                <input id="search" type="text" placeholder="Введіть назву або бренд..." autocomplete="off"/>
+            </div>
+        </div>
+
+        <div class="filter-group">
+            <span class="label">Категорії</span>
+            <div class="chips" id="category-chips">
+                <button class="chip active" data-cat="all">Усі</button>
+                <button class="chip" data-cat="Чоловіче">Чоловіче</button>
+                <button class="chip" data-cat="Жіноче">Жіноче</button>
+                <button class="chip" data-cat="Дитяче">Дитяче</button>
+                <button class="chip" data-cat="Взуття">Взуття</button>
+            </div>
+        </div>
+
+        <div class="filter-group">
+            <label for="sort">Сортування</label>
+            <select id="sort">
+                <option value="popular">За популярністю</option>
+                <option value="price-asc">Ціна: від дешевих</option>
+                <option value="price-desc">Ціна: від дорогих</option>
+                <option value="name">Назва</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <span class="label">Ціна</span>
+            <div class="price-range">
+                <input id="price-min" type="number" placeholder="Мін" min="0" style="width: 85px"/>
+                <span>—</span>
+                <input id="price-max" type="number" placeholder="Макс" min="0" style="width: 85px"/>
+                <button id="price-apply" class="btn btn-sm">OK</button>
+            </div>
+        </div>
+
+        <div class="filter-group">
+            <label class="checkbox">
+                <input type="checkbox" id="only-favorites"/>
+                <span>Лише обрані</span>
+            </label>
+        </div>
+
+        <button id="reset-filters" class="btn btn-outline btn-sm">Скинути фільтри</button>
+    </aside>
+
+    <section class="catalog-content">
+        <div class="section__head">
+            <h1>Каталог</h1>
+            <div class="results-count"><span id="results-count">0</span> товар(ів)</div>
+        </div>
+        <div class="product-grid" id="catalog-grid" aria-live="polite"></div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="footer__bottom">
+        <p>&copy; 2025 Fashion Store</p>
+    </div>
+</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+<script src="./main.js"></script>
+</body>
+</html>
